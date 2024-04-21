@@ -31,8 +31,10 @@ exports.createRecipe = async (req, res, next) => {
       mealTime,
       mainIngredients,
       steps,
+      serving,
+      course,
       mainRegion,
-      createdB,
+      createdBy,
       videoLink,
     } = req.body;
     const newRecipe = await Recipe.create({
@@ -42,10 +44,12 @@ exports.createRecipe = async (req, res, next) => {
       isVeg,
       cuisine,
       mealTime,
+      course,
+      serving,
       mainIngredients,
       steps,
       mainRegion,
-      createdB,
+      createdBy,
       videoLink,
     });
     res.status(200).json(newRecipe);
