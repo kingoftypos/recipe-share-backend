@@ -15,8 +15,6 @@
       "Gram flour (Besan)",
     ],
     Servings: 6,
-    Course: "Side Dish",
-    Diet: "Diabetic Friendly",
     steps: [
       "To begin making the Masala Karela Recipe,de-seed the Bitter Gourd (karela) and slice. Do not remove the skin as the skin has all the nutrients.",
       " Add the karela to the pressure cooker with 3 tablespoon of water, salt and turmeric powder and pressure cook for three whistles. Release the pressure immediately and open the lids. Keep aside.",
