@@ -1,11 +1,20 @@
 const express = require("express");
 const env = require("dotenv");
+const cors = require("cors");
 const connectDb = require("./config/dbConfig");
+
+const recipeRoute = require("./routes/recipeRoutes");
+const userRoute = require("./routes/userRoutes");
 
 env.config();
 
 connectDb();
 const app = express();
+app.use(cors());
+app.use(express.json());
+
+app.use("/v1/api/recipe", recipeRoute);
+app.use("/v1/api/user", userRoute);
 
 const port = process.env.PORT || 5000;
 
