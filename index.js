@@ -13,6 +13,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res, next) => {
+  res.json({
+    message: "Api is running",
+  });
+});
 app.use("/v1/api/recipe", recipeRoute);
 app.use("/v1/api/user", userRoute);
 
