@@ -57,3 +57,28 @@ exports.createRecipe = async (req, res, next) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+exports.updateRecipe = async (req, res, next) => {
+  try {
+    const recipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!recipe) {
+      return new Error("No recipe found by that ID");
+    }
+    res.status(200).json(recipe);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.deleteRecipe = async (req, res, next) => {
+  try {
+    const recipe = await Recipe.findByIdAndDelete(req.params.id);
+    res.status(200).json("Recipe deleted successfully");
+    next();
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
