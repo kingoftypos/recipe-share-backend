@@ -1,8 +1,16 @@
 const Recipe = require("../models/recipeSchema");
+const APIFeatures = require("./../utils/apiFeatures");
 
 exports.getAllRecipe = async (req, res, next) => {
   try {
-    const recipe = await Recipe.find({});
+    console.log(`this is req.query:`, req.query);
+    //const recipe = await Recipe.find(req.query);
+    const features = new APIFeatures(Recipe.find(), req.query).filter();
+    // // .sort()
+    // // .limitFields()
+    // // .paginate();
+    const recipe = await features.query;
+
     res.status(200).json(recipe);
     next();
   } catch (error) {
@@ -37,6 +45,12 @@ exports.createRecipe = async (req, res, next) => {
       createdBy,
       videoLink,
     } = req.body;
+    const recipe = await Recipe.findOne({ title });
+    if (recipe) {
+      return res
+        .status(400)
+        .json("Recipe already exists. Please add another recipe");
+    }
     const newRecipe = await Recipe.create({
       title,
       description,
