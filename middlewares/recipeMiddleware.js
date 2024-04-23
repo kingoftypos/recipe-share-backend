@@ -11,7 +11,10 @@ exports.getAllRecipe = async (req, res, next) => {
     // // .paginate();
     const recipe = await features.query;
 
-    res.status(200).json(recipe);
+    res.status(200).json({
+      length: recipe.length,
+      recipe,
+    });
     next();
   } catch (error) {
     res.status(500).json({ error: error.message });
