@@ -1,23 +1,5 @@
 [
   {
-    title: "Gongura Chicken Curry Recipe - Andhra Style Gongura Chicken",
-
-    TranslatedIngredients:
-      "500 grams Chicken,2 Onion - chopped,1 Tomato - chopped,4 Green Chillies - slit,1 inch Ginger - finely chopped,6 cloves Garlic - finely chopped,1/2 teaspoon Turmeric powder (Haldi),1 teaspoon Garam masala powder,2 tablespoon Sesame (Gingelly) Oil,Salt - to taste,1/4 teaspoon Methi Seeds (Fenugreek Seeds),1 tablespoon Coriander (Dhania) Seeds,4 Dry Red Chillies,1 teaspoon Fennel seeds (Saunf),1 teaspoon Sesame (Gingelly) Oil,4 cloves Garlic,2 cups Sorrel Leaves (Gongura) - picked and chopped,Salt - to taste",
-    PrepTimeInMins: 15,
-    CookTimeInMins: 30,
-    TotalTimeInMins: 45,
-    Servings: 4,
-    Cuisine: "Andhra",
-    Course: "Lunch",
-    Diet: "Non Vegeterian",
-    Instructions:
-      "To begin making Gongura Chicken Curry Recipe first prep all the ingredients and keep them aside.In a small pan, dry roast the methi seeds, coriander seeds, fennel seeds and red chillies for about 3 to 4 minutes on medium heat, until you notice the seeds crackling. Once done, turn off the heat and allow it to cool a bit and blend it into a smooth powder.Heat oil in a pressure cooker over medium heat; add the chopped onions, ginger, garlic and green chillies and saute until the onions are lightly browned and tender.Add the tomatoes, and saute until the tomatoes become soft and mushy. Once done add the chicken, the garam masala and turmeric powder. Add 1/4 cup of water and pressure cook the chicken for 3 to 4 whistles and turn off the heat.Once done, allow the pressure to release naturally.Make sure there are no stems when you pick the gongura leaves. Wash and chop the gongura leaves and keep aside.In another pan,add some oil along garlic and saute the chopped gongura leaves along with a little salt and the ground masala. The gongura leaves will wilt almost instantly. Saute the gongura in the masala for about 3 to 4 minutes until it becomes like a mushy paste.Once done, add the cooked chicken curry into the Gongura masala and saute on high heat for another 2 minutes and turn off the heat.Check the salt and spices and adjust according to taste. Transfer the Gongura Chicken Curry to a serving bowl and serve hot.Serve Gongura Chicken with Ghee Rice Recipe | Neychoru , Tomato Onion Cucumber Raita Recipe and a Semiya Payasam for a delicious weekend lunch.\n",
-    TranslatedInstructions:
-      "To begin making Gongura Chicken Curry Recipe first prep all the ingredients and keep them aside.In a small pan, dry roast the methi seeds, coriander seeds, fennel seeds and red chillies for about 3 to 4 minutes on medium heat, until you notice the seeds crackling. Once done, turn off the heat and allow it to cool a bit and blend it into a smooth powder.Heat oil in a pressure cooker over medium heat; add the chopped onions, ginger, garlic and green chillies and saute until the onions are lightly browned and tender.Add the tomatoes, and saute until the tomatoes become soft and mushy. Once done add the chicken, the garam masala and turmeric powder. Add 1/4 cup of water and pressure cook the chicken for 3 to 4 whistles and turn off the heat.Once done, allow the pressure to release naturally.Make sure there are no stems when you pick the gongura leaves. Wash and chop the gongura leaves and keep aside.In another pan,add some oil along garlic and saute the chopped gongura leaves along with a little salt and the ground masala. The gongura leaves will wilt almost instantly. Saute the gongura in the masala for about 3 to 4 minutes until it becomes like a mushy paste.Once done, add the cooked chicken curry into the Gongura masala and saute on high heat for another 2 minutes and turn off the heat.Check the salt and spices and adjust according to taste. Transfer the Gongura Chicken Curry to a serving bowl and serve hot.Serve Gongura Chicken with Ghee Rice Recipe | Neychoru , Tomato Onion Cucumber Raita Recipe and a Semiya Payasam for a delicious weekend lunch.",
-    URL: "http://www.archanaskitchen.com/gongura-chicken-curry-recipe-andhra-style-gongura-chicken",
-  },
-  {
     title: "Andhra Style Alam Pachadi Recipe - Adrak Chutney (Recipe)",
 
     TranslatedIngredients:
