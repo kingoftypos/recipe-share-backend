@@ -32,7 +32,7 @@ const recipeSchema = new mongoose.Schema({
   },
   allingredients: {
     type: Array,
-    required: [true, "A recipe must have a main ingridents"],
+    required: [true, "A recipe must have a all ingridents"],
   },
   serving: {
     type: Number,

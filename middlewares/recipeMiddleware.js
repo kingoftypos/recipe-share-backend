@@ -5,10 +5,12 @@ exports.getAllRecipe = async (req, res, next) => {
   try {
     console.log(`this is req.query:`, req.query);
     //const recipe = await Recipe.find(req.query);
-    const features = new APIFeatures(Recipe.find(), req.query).filter();
+    const features = new APIFeatures(Recipe.find(), req.query)
+      .filter()
+      .paginate();
     // // .sort()
     // // .limitFields()
-    // // .paginate();
+
     const recipe = await features.query;
 
     res.status(200).json({
@@ -36,17 +38,18 @@ exports.createRecipe = async (req, res, next) => {
     const {
       title,
       description,
-      coverImg,
-      isVeg,
+      coverimg,
+      isveg,
       cuisine,
-      mealTime,
-      mainIngredients,
+      mealtime,
+      mainingredients,
+      allingridents,
       steps,
       serving,
       course,
-      mainRegion,
-      createdBy,
-      videoLink,
+      mainregion,
+      createdby,
+      videolink,
     } = req.body;
     const recipe = await Recipe.findOne({ title });
     if (recipe) {
@@ -57,17 +60,18 @@ exports.createRecipe = async (req, res, next) => {
     const newRecipe = await Recipe.create({
       title,
       description,
-      coverImg,
-      isVeg,
+      coverimg,
+      isveg,
       cuisine,
-      mealTime,
-      course,
-      serving,
-      mainIngredients,
+      mealtime,
+      mainingredients,
+      allingridents,
       steps,
-      mainRegion,
-      createdBy,
-      videoLink,
+      serving,
+      course,
+      mainregion,
+      createdby,
+      videolink,
     });
     res.status(200).json(newRecipe);
   } catch (error) {
