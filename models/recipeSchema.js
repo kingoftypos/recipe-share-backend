@@ -9,11 +9,11 @@ const recipeSchema = new mongoose.Schema({
     type: String,
     required: [true, "A recipe must have a description"],
   },
-  coverimg: {
+  coverImg: {
     type: String,
     required: [true, "A recipe must have a cover Image"],
   },
-  isveg: {
+  isVeg: {
     type: Boolean,
     required: [true, "A recipe must tell if it is isVeg"],
   },
@@ -26,11 +26,11 @@ const recipeSchema = new mongoose.Schema({
     type: String,
     required: [true, "A recipe must have a meal time"],
   },
-  mainingredients: {
+  mainIngredients: {
     type: Array,
     required: [true, "A recipe must have a main ingridents"],
   },
-  allingredients: {
+  allIngredients: {
     type: Array,
     required: [true, "A recipe must have a all ingridents"],
   },
@@ -42,18 +42,18 @@ const recipeSchema = new mongoose.Schema({
     type: Array,
     required: [true, "A recipe must have a steps"],
   },
-  mainregion: {
+  mainRegion: {
     type: Array,
     required: [true, "A recipe must have a main region"],
   },
-  createdby: {
+  createdBy: {
     // type: mongoose.Schema.Types.ObjectId,
     // ref: "User",
     // required: [true, "A recipe must have a createdBy"],
     type: String,
     required: [true, "A recipe must have a createdBy"],
   },
-  videolink: {
+  videoLink: {
     type: String,
   },
 });

@@ -4,7 +4,7 @@ const cookieParser = require("cookie-parser");
 
 exports.protect = async (req, res, next) => {
   let token;
-  token = req.cookies.RememberMe;
+  token = req.cookies.token;
 
   if (token) {
     let decoded;
@@ -19,7 +19,9 @@ exports.protect = async (req, res, next) => {
       }
       decoded = tokenRes;
     });
-    const user = await User.findById(decoded._id);
+    console.log(decoded.id);
+    const user = await User.findById(decoded.id);
+
     if (user) {
       req.user = user;
     } else {
