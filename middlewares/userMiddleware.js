@@ -57,7 +57,7 @@ exports.forgetPassword = async (req, res, next) => {
       return res.status(401).json({ message: "user doesn't exist" });
     }
     let token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1d",
+      expiresIn: process.env.JWT_EXPRIRESIN,
     });
     var transporter = nodemailer.createTransport({
       service: "gmail",
@@ -66,7 +66,6 @@ exports.forgetPassword = async (req, res, next) => {
         pass: process.env.PASSKEY,
       },
     });
-
     var mailOptions = {
       from: "fortwitteronli8052@gmail.com",
       to: `${email}`,
@@ -96,7 +95,7 @@ exports.resetPassword = async (req, res, next) => {
           .status(401)
           .json({ error: "something wrong with the token" });
       else {
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(password, 12);
         const response = await User.findByIdAndUpdate(
           { _id: id },
           { password: hashedPassword }

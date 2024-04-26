@@ -10,15 +10,22 @@ exports.protect = async (req, res, next) => {
     let decoded;
 
     jwt.verify(token, process.env.JWT_SECRET, (err, tokenRes) => {
-      if (err) {
+      try {
+        decoded = tokenRes;
+      } catch (error) {
         if (err.name === "TokenExpiredError") {
-          res.status(401);
-          throw new Error("Unauthorized- Token has expired");
+          return res
+            .status(401)
+            .json({ error: "Unauthorized- Token has expired" });
+          //throw new Error("");
         }
         return res.status(401).json({ message: "token expired" });
       }
+<<<<<<< Updated upstream
       decoded = tokenRes;
       res.locals.id=decoded.id;
+=======
+>>>>>>> Stashed changes
     });
 
     const user = await User.findById(decoded.id);
@@ -26,12 +33,11 @@ exports.protect = async (req, res, next) => {
     if (user) {
       req.user = user;
     } else {
-      res.status(401);
-      throw new Error("Unauthorized - user not found");
+      return res.status(401).json({ error: "Unauthorized - user not found" });
+      //throw new Error("");
     }
   } else {
-    res.status(401);
-    throw new Error("Unauthorized - No token");
+    return res.status(401).json({ error: "Unauthorized - token not found" });
   }
   next();
 };
