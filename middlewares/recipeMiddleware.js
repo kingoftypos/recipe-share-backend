@@ -1,4 +1,5 @@
 const Recipe = require("../models/recipeSchema");
+const User=require("../models/userSchema");
 const APIFeatures = require("./../utils/apiFeatures");
 
 exports.getAllRecipe = async (req, res, next) => {
@@ -47,7 +48,7 @@ exports.createRecipe = async (req, res, next) => {
       serving,
       steps,
       mainRegion,
-      createdBy,
+      //createdBy,
       videoLink,
     } = req.body;
     const recipe = await Recipe.findOne({ title });
@@ -56,6 +57,12 @@ exports.createRecipe = async (req, res, next) => {
         .status(400)
         .json("Recipe already exists. Please add another recipe");
     }
+    async function findName(id)
+    {
+      const user=await User.findById(id);
+      return user.name;
+    }
+    let val=await findName(res.locals.id);
     const newRecipe = await Recipe.create({
       title,
       description,
@@ -68,7 +75,7 @@ exports.createRecipe = async (req, res, next) => {
       serving,
       steps,
       mainRegion,
-      createdBy,
+      createdBy: val,
       videoLink,
     });
     res.status(200).json(newRecipe);
