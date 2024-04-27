@@ -21,11 +21,8 @@ exports.protect = async (req, res, next) => {
         }
         return res.status(401).json({ message: "token expired" });
       }
-<<<<<<< Updated upstream
       decoded = tokenRes;
-      res.locals.id=decoded.id;
-=======
->>>>>>> Stashed changes
+      res.locals.id = decoded.id;
     });
 
     const user = await User.findById(decoded.id);
