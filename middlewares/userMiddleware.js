@@ -8,7 +8,7 @@ exports.createUser = async (req, res, next) => {
     const { name, email, password } = req.body;
     const user = await User.findOne({ email });
     if (user) {
-      return res.status(400).json("User already exists");
+      return res.status(400).json({ error: "User already exists" });
     }
     // const hashPassword= await bcrypt.hash(password,10)
     const newUser = await User.create({
@@ -77,7 +77,9 @@ exports.forgetPassword = async (req, res, next) => {
       if (error) {
         console.log(error);
       } else {
-        return res.status(200).json({ message: "mail send", token: token });
+        return res
+          .status(200)
+          .json({ message: "mail send", token: token, id: user._id });
       }
     });
   } catch (err) {
@@ -98,9 +100,10 @@ exports.resetPassword = async (req, res, next) => {
         const hashedPassword = await bcrypt.hash(password, 12);
         const response = await User.findByIdAndUpdate(
           { _id: id },
-          { password: hashedPassword }
+          { hashedPassword }
         );
-        if (response) return res.status(200).json({ Status: "success" });
+        if (response)
+          return res.status(200).json({ Status: "success", hashedPassword });
         else return res.status(404).json({ Status: err });
       }
     })
