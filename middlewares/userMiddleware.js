@@ -54,12 +54,12 @@ exports.loginUser = async (req, res, next) => {
       expiresIn: process.env.JWT_EXPRIRESIN,
     });
     res.cookie("token", token, {
-      expires: process.env.JWT_EXPRIRESIN,
+      maxAge: 10000,
+      httpOnly: true,
     });
     res.status(200).json({
       message: "User logged in",
       id: user._id,
-      token: token,
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
