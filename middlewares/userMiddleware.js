@@ -11,7 +11,7 @@ exports.getUser = async (req, res, next) => {
     if (!user) {
       return res.status(404).json("User Not Found");
     }
-   return res.json(user);
+    return res.json(user);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
@@ -59,11 +59,12 @@ exports.loginUser = async (req, res, next) => {
       {
         maxAge: 604800000,
         // httpOnly: true,
-        // sameSite: none,
-      },
+        secure: true, // Required for SameSite=None
+        sameSite: "none",
+      }
       // { domain: "up.railway.app" }
     );
-     return res.status(200).json({
+    return res.status(200).json({
       message: "User logged in",
       id: user._id,
     });
