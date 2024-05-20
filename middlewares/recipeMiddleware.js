@@ -4,7 +4,7 @@ const APIFeatures = require("./../utils/apiFeatures");
 
 exports.getAllRecipe = async (req, res, next) => {
   try {
-    console.log(`this is req.query:`, req.query);
+    //console.log(`this is req.query:`, req.query);
     //const recipe = await Recipe.find(req.query);
     const features = new APIFeatures(Recipe.find(), req.query)
       .filter()
