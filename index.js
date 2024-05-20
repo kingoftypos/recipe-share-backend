@@ -4,6 +4,8 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const connectDb = require("./config/dbConfig");
 
+const corsMiddleware = require("./middlewares/corsMiddleware");
+
 const recipeRoute = require("./routes/recipeRoutes");
 const userRoute = require("./routes/userRoutes");
 
@@ -11,14 +13,15 @@ env.config();
 
 connectDb();
 const app = express();
+app.use(cookieParser());
+app.use(express.json());
+app.use(corsMiddleware);
 app.use(
   cors({
     origin: "http://localhost:3000",
     credentials: true,
   })
 );
-app.use(cookieParser());
-app.use(express.json());
 
 app.get("/", (req, res, next) => {
   res.json({
