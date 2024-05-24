@@ -85,6 +85,8 @@ exports.createRecipe = async (req, res, next) => {
 
 exports.updateRecipe = async (req, res, next) => {
   try {
+    //check if the id passed and user id is same before updating
+    console.log(res.locals.id);
     const recipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,

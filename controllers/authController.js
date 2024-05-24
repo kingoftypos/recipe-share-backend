@@ -29,6 +29,12 @@ exports.protect = async (req, res, next) => {
 
     if (user) {
       req.user = user;
+      const { name, email, _id } = user;
+      req.status(200).json({
+        name,
+        email,
+        _id,
+      });
     } else {
       return res.status(401).json({ error: "Unauthorized - user not found" });
       //throw new Error("");

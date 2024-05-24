@@ -8,10 +8,15 @@ exports.getUser = async (req, res, next) => {
     const userId = res.locals.id;
     console.log(res.locals.id);
     const user = await User.findById(userId);
+    const { _id, email, name } = user;
     if (!user) {
       return res.status(404).json("User Not Found");
     }
-    return res.json(user);
+    return res.json({
+      _id,
+      name,
+      email,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
