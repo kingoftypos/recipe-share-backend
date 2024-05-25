@@ -59,7 +59,7 @@ exports.loginUser = async (req, res, next) => {
       expiresIn: process.env.JWT_EXPRIRESIN,
     });
     res.cookie(
-      "authToken",
+      "token",
       token,
       {
         maxAge: 604800000,
