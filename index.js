@@ -21,7 +21,7 @@ app.use(
   cors({
     origin: "http://localhost:3000",
     // origin: "https://recipe-share-frontend.vercel.app",
-
+    exposedHeaders: ["Set-Cookie"],
     credentials: true,
   })
 );
