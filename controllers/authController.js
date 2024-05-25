@@ -4,7 +4,7 @@ const cookieParser = require("cookie-parser");
 
 exports.protect = async (req, res, next) => {
   let token;
-  token = req.cookies.authToken;
+  token = req.cookies.token;
 
   if (token) {
     let decoded;
