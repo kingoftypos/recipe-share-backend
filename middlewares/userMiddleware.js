@@ -64,7 +64,7 @@ exports.loginUser = async (req, res, next) => {
       {
         maxAge: 604800000,
         //httpOnly: false,
-        secure: true, // Required for SameSite=None
+        secure: false, // Required for SameSite=None
         sameSite: "none",
       }
       // { domain: "up.railway.app" }
