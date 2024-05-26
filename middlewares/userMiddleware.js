@@ -63,7 +63,7 @@ exports.loginUser = async (req, res, next) => {
       token,
       {
         maxAge: 604800000,
-        httpOnly: false,
+        //httpOnly: false,
         secure: true, // Required for SameSite=None
         sameSite: "none",
       }
