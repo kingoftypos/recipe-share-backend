@@ -7,7 +7,6 @@ const authController = require("../controllers/authController");
 router.use(cors());
 
 
-router.get("/protectroute", corsMiddelware, authController.protect);
 
 router.get("/", corsMiddelware, authController.protect, userMiddleware.getUser);
 router.post("/register", corsMiddelware, userMiddleware.createUser);
