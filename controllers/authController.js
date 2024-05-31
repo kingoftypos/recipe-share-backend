@@ -25,22 +25,23 @@ exports.protect = async (req, res, next) => {
       res.locals.id = decoded.id;
     });
 
-    const user = await User.findById(decoded.id);
+    // const user = await User.findById(decoded.id);
 
-    if (user) {
-      req.user = user;
-      const { name, email, _id } = user;
-     res.status(200).json({
-        name,
-        email,
-        _id,
-      });
-      next();
-    } else {
-      return res.status(401).json({ error: "Unauthorized - user not found" });
-      //throw new Error("");
-    }
+    // if (user) {
+    //   req.user = user;
+    //   const { name, email, _id } = user;
+    //   res.status(200).json({
+    //     name,
+    //     email,
+    //     _id,
+    //   });
+    //   next();
+    // } else {
+    //   return res.status(401).json({ error: "Unauthorized - user not found" });
+    //   //throw new Error("");
+    // }
   } else {
     return res.status(401).json({ error: "Unauthorized - token not found" });
   }
+  next();
 };
