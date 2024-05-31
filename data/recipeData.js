@@ -11,8 +11,7 @@
     Cuisine: "Andhra",
     Course: "South Indian Breakfast",
     Diet: "Vegetarian",
-    Instructions:
-      "आंध्रा स्टाइल आलम पचड़ी बनाने के लिए सबसे पहले एक कढ़ाई में तेल गरम करे ले. इसमें दाल डाले और भूरा होने तक पका ले.अब इसमें सुखी लाल मिर्च, धनिये के बीज, प्याज, अदरक डाले और प्याज के नरम होने तक पकाए। प्याज के पकने के बाद, इसमें टमाटर डाले और टमाटर के नरम होने तक पका ले. गैस बंद करें और ठंडा होने दे. ठंडा होने के बाद इसको एक मिक्सर ग्राइंडर में डाले और पेस्ट बना ले.  तड़के के लिए, एक छोटी कढ़ाई में तेल गरम करें। इसमें राइ डाले और 10 सेकण्ड्स तक पकने दे. अब इसमें कढ़ी पत्ता, हींग डाले और 10 सेकण्ड्स तक पकने दे. इसे चटनी में डाले और मिला ले. आंध्रा स्टाइल आलम पचड़ी को घी रोस्ट डोसा और किरई सांबर के साथ सुबह के नाश्ते के लिए परोसे।\n",
+
     TranslatedInstructions:
       "To make Andhra Style Alam Pachadi, first heat oil in a pan. Add lentils and cook till it turns brown. Now add dry red chillies, coriander seeds, onion, ginger and cook till the onion becomes soft. After the onion is cooked, add tomatoes and cook till the tomatoes become soft. Turn off the gas and allow it to cool. After it cools down, put it in a mixer grinder and make a paste. For tempering, heat the oil in a small pan. Add mustard seeds and let it cook for 10 seconds. Now add curry leaves, asafoetida and let it cook for 10 seconds. Add it to the chutney and mix. Serve Andhra Style Alam Pachadi with Ghee Roast Dosa and Kirai Sambar for breakfast.",
     URL: "https://www.archanaskitchen.com/andhra-style-allam-pachadi-ginger-chutney-recipe-in-hindi",
