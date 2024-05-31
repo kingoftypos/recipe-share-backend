@@ -30,7 +30,7 @@ exports.protect = async (req, res, next) => {
     if (user) {
       req.user = user;
       const { name, email, _id } = user;
-      return res.status(200).json({
+     res.status(200).json({
         name,
         email,
         _id,
