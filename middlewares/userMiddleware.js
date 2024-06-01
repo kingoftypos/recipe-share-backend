@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer");
 exports.getUser = async (req, res, next) => {
   try {
     const userId = res.locals.id;
-    console.log(res.locals.id);
+    //console.log(res.locals.id);
     const user = await User.findById(userId);
     const { _id, email, name } = user;
     if (!user) {
@@ -138,3 +138,5 @@ exports.resetPassword = async (req, res, next) => {
     })
     .catch((e) => res.json({ status: e }));
 };
+
+

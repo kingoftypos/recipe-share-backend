@@ -27,7 +27,12 @@ exports.getAllRecipe = async (req, res, next) => {
 exports.getRecipeById = async (req, res, next) => {
   try {
     const recipe = await Recipe.findById(req.params.id);
-    res.status(200).json(recipe);
+    //console.log(recipe);
+    const { createdBy } = recipe;
+    const user = await User.findById(createdBy);
+    const { name } = user;
+    res.status(200).json({ ...recipe.toObject(), createdBy: name });
+    //res.status(200).json(recipe);
     next();
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -61,7 +66,9 @@ exports.createRecipe = async (req, res, next) => {
       const user = await User.findById(id);
       return user.name;
     }
-    let val = await findName(res.locals.id);
+    // let val = await findName(res.locals.id);
+    let val = res.locals.id;
+
     const newRecipe = await Recipe.create({
       title,
       description,
@@ -86,15 +93,28 @@ exports.createRecipe = async (req, res, next) => {
 exports.updateRecipe = async (req, res, next) => {
   try {
     //check if the id passed and user id is same before updating
-    
+
     console.log(res.locals.id);
+    console.log(req.params.id);
+
+    const findRecipe = await Recipe.findById(req.params.id);
+
+    if (!recipe) {
+      return new Error("No recipe found by that ID");
+    }
+
+    const { createdBy } = findRecipe;
+
+    if (createdBy != res.locals.id) {
+      return res
+        .status(401)
+        .json("You are not authorized to update this recipe");
+    }
     const recipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
     });
-    if (!recipe) {
-      return new Error("No recipe found by that ID");
-    }
+
     res.status(200).json(recipe);
   } catch (error) {
     res.status(500).json({ error: error.message });
