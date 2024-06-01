@@ -99,7 +99,7 @@ exports.updateRecipe = async (req, res, next) => {
 
     const findRecipe = await Recipe.findById(req.params.id);
 
-    if (!recipe) {
+    if (!findRecipe) {
       return new Error("No recipe found by that ID");
     }
 
