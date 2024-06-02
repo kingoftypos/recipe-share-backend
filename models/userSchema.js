@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "A user must have a password"],
   },
+  recipes: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Recipe",
+  },
 });
 userSchema.pre("save", async function () {
   //if (this.isModified(this.password)) return next();

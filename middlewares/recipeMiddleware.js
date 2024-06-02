@@ -84,7 +84,13 @@ exports.createRecipe = async (req, res, next) => {
       createdBy: val,
       videoLink,
     });
-    res.status(200).json(newRecipe);
+    const savedRecipe = await newRecipe.save();
+
+    const { _id } = savedRecipe;
+    await User.findByIdAndUpdate(val, {
+      $push: { recipes: _id },
+    });
+    res.status(200).json(savedRecipe);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -94,8 +100,8 @@ exports.updateRecipe = async (req, res, next) => {
   try {
     //check if the id passed and user id is same before updating
 
-    console.log(res.locals.id);
-    console.log(req.params.id);
+    //console.log(res.locals.id);
+    //console.log(req.params.id);
 
     const findRecipe = await Recipe.findById(req.params.id);
 
@@ -123,6 +129,16 @@ exports.updateRecipe = async (req, res, next) => {
 
 exports.deleteRecipe = async (req, res, next) => {
   try {
+    const findRecipe = await Recipe.findById(req.params.id);
+    if (!findRecipe) {
+      return new Error("No recipe found by that ID");
+    }
+    const { createdBy } = findRecipe;
+    if (createdBy != res.locals.id) {
+      return res
+        .status(401)
+        .json("You are not authorized to delete this recipe");
+    }
     const recipe = await Recipe.findByIdAndDelete(req.params.id);
     res.status(200).json("Recipe deleted successfully");
     next();
