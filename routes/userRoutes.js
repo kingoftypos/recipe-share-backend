@@ -16,6 +16,6 @@ router.post(
   corsMiddelware,
   userMiddleware.resetPassword
 );
-router.patch("/:id",corsMiddelware,userMiddleware.editDetails);
+router.patch("/",corsMiddelware,authController.protect,userMiddleware.editDetails);
 
 module.exports = router;

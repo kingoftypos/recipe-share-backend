@@ -142,7 +142,7 @@ exports.resetPassword = async (req, res, next) => {
 };
 exports.editDetails = async (req, res, next) => {
   try {
-    let id = req.params.id;
+    let id = res.locals.id;
     let { name, email } = req.body;
     
     let result = await User.findByIdAndUpdate(
