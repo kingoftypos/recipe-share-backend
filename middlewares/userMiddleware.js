@@ -137,6 +137,27 @@ exports.resetPassword = async (req, res, next) => {
       }
     })
     .catch((e) => res.json({ status: e }));
+    
+    
+};
+exports.editDetails = async (req, res, next) => {
+  try {
+    let id = req.params.id;
+    let { name, email } = req.body;
+    
+    let result = await User.findByIdAndUpdate(
+      id,
+      { name, email }
+    );
+
+    if (!result)
+      return res.status(404).json({ status: "Couldn't update the info" });
+    
+    return res.status(200).json({ status: "success", data: result });
+  } catch (error) {
+    console.error("Error updating user details:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
 };
 
 
