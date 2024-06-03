@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 
+
 exports.getUser = async (req, res, next) => {
   try {
     const userId = res.locals.id;
@@ -88,6 +89,7 @@ exports.forgetPassword = async (req, res, next) => {
     let token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_EXPRIRESIN,
     });
+    let baseurl=process.env.BASE_URL;
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -99,7 +101,7 @@ exports.forgetPassword = async (req, res, next) => {
       from: "fortwitteronli8052@gmail.com",
       to: `${email}`,
       subject: "Reset password link",
-      text: `http://localhost:5000/v1/api/user/reset-password/${user._id}/${token}`,
+      text: `${baseurl}/reset-password/${user._id}/${token}`,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
