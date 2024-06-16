@@ -6,7 +6,6 @@ const corsMiddelware = require("../middlewares/corsMiddleware");
 const authController = require("../controllers/authController");
 router.use(cors());
 
-
 router.get("/", corsMiddelware, authController.protect, userMiddleware.getUser);
 router.post("/register", corsMiddelware, userMiddleware.createUser);
 router.post("/login", corsMiddelware, userMiddleware.loginUser);
@@ -16,6 +15,17 @@ router.post(
   corsMiddelware,
   userMiddleware.resetPassword
 );
-router.patch("/",corsMiddelware,authController.protect,userMiddleware.editDetails);
+router.patch(
+  "/",
+  corsMiddelware,
+  authController.protect,
+  userMiddleware.editDetails
+);
+router.get(
+  "/recipes",
+  corsMiddelware,
+  authController.protect,
+  userMiddleware.getUserRecipies
+);
 
 module.exports = router;

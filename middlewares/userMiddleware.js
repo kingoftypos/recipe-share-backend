@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 
-
 exports.getUser = async (req, res, next) => {
   try {
     const userId = res.locals.id;
@@ -89,7 +88,7 @@ exports.forgetPassword = async (req, res, next) => {
     let token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_EXPRIRESIN,
     });
-    let baseurl=process.env.BASE_URL;
+    let baseurl = process.env.BASE_URL;
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -139,22 +138,17 @@ exports.resetPassword = async (req, res, next) => {
       }
     })
     .catch((e) => res.json({ status: e }));
-    
-    
 };
 exports.editDetails = async (req, res, next) => {
   try {
     let id = res.locals.id;
     let { name, email } = req.body;
-    
-    let result = await User.findByIdAndUpdate(
-      id,
-      { name, email }
-    );
+
+    let result = await User.findByIdAndUpdate(id, { name, email });
 
     if (!result)
       return res.status(404).json({ status: "Couldn't update the info" });
-    
+
     return res.status(200).json({ status: "success", data: result });
   } catch (error) {
     console.error("Error updating user details:", error);
@@ -162,4 +156,22 @@ exports.editDetails = async (req, res, next) => {
   }
 };
 
+exports.getUserRecipies = async (req, res, next) => {
+  try {
+    let userId = res.locals.id;
+    const user = await User.findById(userId).populate("recipes");
 
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        recipes: user.recipes,
+      },
+    });
+  } catch (error) {
+    next(err);
+  }
+};

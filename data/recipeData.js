@@ -17,25 +17,6 @@
     URL: "https://www.archanaskitchen.com/andhra-style-allam-pachadi-ginger-chutney-recipe-in-hindi",
   },
   {
-    title:
-      "Pudina Khara Pongal Recipe (Rice and Lentils Cooked With Mint Leaves & Mild Spices)",
-
-    TranslatedIngredients:
-      "1 cup Rice - soaked for 20 minutes,1/2 cup Yellow Moong Dal (Split) - soaked for 20 minutes,1 cup Mint Leaves (Pudina) - tightly packed,1/4 cup Coriander (Dhania) Leaves - tightly packed,1 Green Chilli,1 inch Ginger,1 teaspoon Cumin seeds (Jeera),5 cups Water,1 teaspoon Sunflower Oil,Salt - to taste,2 tablespoons Ghee,8 Cashew nuts - halved,1 teaspoon Cumin seeds (Jeera),1 teaspoon Whole Black Peppercorns,1 sprig Curry leaves,1 pinch Asafoetida (hing)",
-    PrepTimeInMins: 10,
-    CookTimeInMins: 20,
-    TotalTimeInMins: 30,
-    Servings: 4,
-    Cuisine: "South Indian Recipes",
-    Course: "South Indian Breakfast",
-    Diet: "High Protein Vegetarian",
-    Instructions:
-      "To begin making Pudina Khara Pongal Recipe, wash and soak the rice and dal for 20 minutes.Make a paste of mint/pudina, coriander, green chilli and ginger using a mixer grinder and keep aside.Now, heat oil in the pressure cooker, add the cumin seeds and let it crackle.Add the soaked rice and dal and fry for a few minutes.Add the mint coriander paste and saute for a minute.Add 5 cups of water, season with salt and pressure cook for 4 to 5 whistles and keep aside.In the mean prepare the tadka by heating ghee in a small tadka pan.Add in the cumin seeds, peppercorns and let it crackle.Add the cashew halves and fry till they turn golden.Add the curry leaves and asafoetida and turn off the flame.Once the pressure has been released, open the lid and mash the pongal mixture.Add in the tadka over it and Serve the Pudina Khara Pongal Recipe along with Kathirikai Gothsu Recipe (Spicy and Tangy Eggplant Curry)and South Indian Coconut Chutney for a relaxed weekend breakfast.\n",
-    TranslatedInstructions:
-      "To begin making Pudina Khara Pongal Recipe, wash and soak the rice and dal for 20 minutes.Make a paste of mint/pudina, coriander, green chilli and ginger using a mixer grinder and keep aside.Now, heat oil in the pressure cooker, add the cumin seeds and let it crackle.Add the soaked rice and dal and fry for a few minutes.Add the mint coriander paste and saute for a minute.Add 5 cups of water, season with salt and pressure cook for 4 to 5 whistles and keep aside.In the mean prepare the tadka by heating ghee in a small tadka pan.Add in the cumin seeds, peppercorns and let it crackle.Add the cashew halves and fry till they turn golden.Add the curry leaves and asafoetida and turn off the flame.Once the pressure has been released, open the lid and mash the pongal mixture.Add in the tadka over it and Serve the Pudina Khara Pongal Recipe along with Kathirikai Gothsu Recipe (Spicy and Tangy Eggplant Curry)and South Indian Coconut Chutney for a relaxed weekend breakfast.",
-    URL: "http://www.archanaskitchen.com/pudina-khara-pongal-recipe-rice-and-lentils-cooked-with-mint-leaves-mild-spices",
-  },
-  {
     title: "Udupi Style Ash Gourd Coconut Curry Recipe",
 
     TranslatedIngredients:
