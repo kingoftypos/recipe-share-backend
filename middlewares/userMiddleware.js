@@ -167,9 +167,7 @@ exports.getUserRecipies = async (req, res, next) => {
 
     res.status(200).json({
       status: "success",
-      data: {
-        recipes: user.recipes,
-      },
+      recipes: user.recipes,
     });
   } catch (error) {
     next(err);
