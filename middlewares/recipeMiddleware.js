@@ -129,7 +129,8 @@ exports.updateRecipe = async (req, res, next) => {
 
 exports.deleteRecipe = async (req, res, next) => {
   try {
-    const findRecipe = await Recipe.findById(req.params.id);
+    const recipeId = req.params.id;
+    const findRecipe = await Recipe.findById(recipeId);
     if (!findRecipe) {
       return new Error("No recipe found by that ID");
     }
@@ -139,7 +140,13 @@ exports.deleteRecipe = async (req, res, next) => {
         .status(401)
         .json("You are not authorized to delete this recipe");
     }
-    const recipe = await Recipe.findByIdAndDelete(req.params.id);
+    // Delete the recipe
+    await Recipe.findByIdAndDelete(recipeId);
+
+    // Remove the recipe ID from the user's recipes array
+    await User.findByIdAndUpdate(createdBy, {
+      $pull: { recipes: recipeId },
+    });
     res.status(200).json("Recipe deleted successfully");
     next();
   } catch (error) {
