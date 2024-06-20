@@ -78,6 +78,45 @@ exports.loginUser = async (req, res, next) => {
   }
 };
 
+// exports.forgetPassword = async (req, res, next) => {
+//   try {
+//     const { email } = req.body;
+//     const user = await User.findOne({ email });
+//     if (!user) {
+//       return res.status(401).json({ message: "user doesn't exist" });
+//     }
+//     let token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+//       expiresIn: process.env.JWT_EXPRIRESIN,
+//     });
+//     let baseurl = process.env.BASE_URL;
+//     var transporter = nodemailer.createTransport({
+//       service: "gmail",
+//       auth: {
+//         user: "fortwitteronli8052@gmail.com",
+//         pass: process.env.PASSKEY,
+//       },
+//     });
+//     var mailOptions = {
+//       from: "fortwitteronli8052@gmail.com",
+//       to: `${email}`,
+//       subject: "Reset password link",
+//       text: `${baseurl}/reset-password/${user._id}/${token}`,
+//     };
+
+//     transporter.sendMail(mailOptions, function (error, info) {
+//       if (error) {
+//         console.log(error);
+//       } else {
+//         return res
+//           .status(200)
+//           .json({ message: "mail send", token: token, id: user._id });
+//       }
+//     });
+//   } catch (err) {
+//     res.status(500).json({ error: err.message });
+//   }
+// };
+
 exports.forgetPassword = async (req, res, next) => {
   try {
     const { email } = req.body;
@@ -85,34 +124,42 @@ exports.forgetPassword = async (req, res, next) => {
     if (!user) {
       return res.status(401).json({ message: "user doesn't exist" });
     }
-    let token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_EXPRIRESIN,
     });
-    let baseurl = process.env.BASE_URL;
-    var transporter = nodemailer.createTransport({
+    const baseurl = process.env.BASE_URL;
+
+    const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: "fortwitteronli8052@gmail.com",
         pass: process.env.PASSKEY,
       },
     });
-    var mailOptions = {
+
+    const mailOptions = {
       from: "fortwitteronli8052@gmail.com",
-      to: `${email}`,
+      to: email,
       subject: "Reset password link",
       text: `${baseurl}/reset-password/${user._id}/${token}`,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
-        console.log(error);
+        console.error("Error sending email: ", error);
+        return res
+          .status(500)
+          .json({ message: "Error sending email", error: error.message });
       } else {
+        console.log("Email sent: " + info.response);
         return res
           .status(200)
-          .json({ message: "mail send", token: token, id: user._id });
+          .json({ message: "Mail sent", token: token, id: user._id });
       }
     });
   } catch (err) {
+    console.error("Error in forgetPassword: ", err);
     res.status(500).json({ error: err.message });
   }
 };
