@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema({
       ref: "Recipe",
     },
   ],
+  
 });
 userSchema.pre("save", async function () {
   //if (this.isModified(this.password)) return next();

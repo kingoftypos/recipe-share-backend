@@ -17,10 +17,10 @@
     URL: "https://www.archanaskitchen.com/andhra-style-allam-pachadi-ginger-chutney-recipe-in-hindi",
   },
   {
-    title: "Udupi Style Ash Gourd Coconut Curry Recipe",
+    title: "",
 
     TranslatedIngredients:
-      "500 grams Vellai Poosanikai (Ash gourd/White Pumpkin),1/2 teaspoon Turmeric powder (Haldi),Salt - to taste,Sunflower Oil - for cooking,4 Dry Red Chillies,1/2 cup Fresh coconut - grated,30 grams Tamarind Water,1/2 teaspoon Methi Seeds (Fenugreek Seeds),1/2 teaspoon Cumin seeds (Jeera),2 teaspoons Coriander (Dhania) Seeds,2 teaspoons Sesame seeds (Til seeds),3 tablespoons Jaggery,1 cup Tamarind Water,1 teaspoon Sunflower Oil,1/2 teaspoon Mustard seeds,2 sprig Curry leaves - roughly torn,1 Dry Red Chillies",
+      ",,,,1 teaspoon Sunflower Oil, - roughly torn,",
     PrepTimeInMins: 10,
     CookTimeInMins: 30,
     TotalTimeInMins: 40,
@@ -31,7 +31,7 @@
     Instructions:
       "To begin making the Udupi Style Ash Gourd Coconut Curry Recipe  cook the ash gourd in the pressure cooker with little water, turmeric powder and salt for just 1 whistle. Release the pressure naturally.Soak the tamarind ball in hot water for about 15 minutes, and squeeze and keep the water.Then dry roast the spices and other ingredients for the ground paste in a pan except the coconut. Then grind it along with coconut to a smooth paste.In same pressure cooker which has the ash gourd add the paste and little water and give it stir. Keep the Udupi Ash Gourd Coconut Curry on the medium heat, Adjust the seasoning and texture if required. Once done transfer it in a bowl.For the seasoning, heat oil in a small skillet and add mustard seeds and let it crackle. After the mustard seeds have crackled add the curry leaves and red chillies. Tun off the heat after the red chillies have darkened and add it on top of the Udupi Style Ash Gourd Coconut Curry and serve. Serve the Udupi Style Ash Gourd Coconut Curry Recipe along with steamed rice, Elai Vadam  and Pisarna Manga for lunch.\n",
     TranslatedInstructions:
-      "To begin making the Udupi Style Ash Gourd Coconut Curry Recipe  cook the ash gourd in the pressure cooker with little water, turmeric powder and salt for just 1 whistle. Release the pressure naturally.Soak the tamarind ball in hot water for about 15 minutes, and squeeze and keep the water.Then dry roast the spices and other ingredients for the ground paste in a pan except the coconut. Then grind it along with coconut to a smooth paste.In same pressure cooker which has the ash gourd add the paste and little water and give it stir. Keep the Udupi Ash Gourd Coconut Curry on the medium heat, Adjust the seasoning and texture if required. Once done transfer it in a bowl.For the seasoning, heat oil in a small skillet and add mustard seeds and let it crackle. After the mustard seeds have crackled add the curry leaves and red chillies. Tun off the heat after the red chillies have darkened and add it on top of the Udupi Style Ash Gourd Coconut Curry and serve. Serve the Udupi Style Ash Gourd Coconut Curry Recipe along with steamed rice, Elai Vadam  and Pisarna Manga for lunch.",
+      "   ",
     URL: "http://www.archanaskitchen.com/udupi-style-ash-gourd-coconut-curry-recipe",
   },
   {

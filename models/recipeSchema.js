@@ -47,14 +47,16 @@ const recipeSchema = new mongoose.Schema({
     required: [true, "A recipe must have a main region"],
   },
   createdBy: {
-    // type: mongoose.Schema.Types.ObjectId,
-    // ref: "User",
-    // required: [true, "A recipe must have a createdBy"],
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: [true, "A recipe must have a createdBy"],
   },
   videoLink: {
     type: String,
+  },
+  likes: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: "User",
   },
 });
 
