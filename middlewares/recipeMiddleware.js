@@ -153,3 +153,43 @@ exports.deleteRecipe = async (req, res, next) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+exports.recipeLikes = async (req, res, next) => {
+  try {
+    const recipe = await Recipe.findById(req.params.id);
+    if (!recipe) {
+      return res.status(404).json({ message: "Recipe not found" });
+    }
+    const { likes } = recipe;
+    const userId = res.locals.id;
+    const isLiked = likes.includes(userId);
+    if (!isLiked) {
+      await Recipe.findByIdAndUpdate(req.params.id, {
+        $push: { likes: userId },
+      });
+    }
+    res.status(200).json(recipe.likes.length);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.recipeUnlikes = async (req, res, next) => {
+  try {
+    const recipe = await Recipe.findById(req.params.id);
+    if (!recipe) {
+      return res.status(404).json({ message: "Recipe not found" });
+    }
+    const { likes } = recipe;
+    const userId = res.locals.id;
+    const isLiked = likes.includes(userId);
+    if (isLiked) {
+      await Recipe.findByIdAndUpdate(req.params.id, {
+        $pull: { likes: userId },
+      });
+    }
+    res.status(200).json(recipe.likes.length);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

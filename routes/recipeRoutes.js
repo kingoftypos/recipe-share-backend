@@ -14,6 +14,18 @@ router.post(
   recipeMiddleware.createRecipe
 );
 router.get("/:id", corsMiddelware, recipeMiddleware.getRecipeById);
+router.post(
+  "/like/:id",
+  corsMiddelware,
+  authController.protect,
+  recipeMiddleware.recipeLikes
+);
+router.post(
+  "unlike/:id",
+  corsMiddelware,
+  authController.protect,
+  recipeMiddleware.recipeUnlikes
+);
 router.delete(
   "/:id",
   corsMiddelware,
