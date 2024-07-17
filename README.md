@@ -1,4 +1,4 @@
-<h1>CuisineConnect Backend API</h1>
+<h1 align = "center"> CuisineConnect Backend API</h1>
 
 Description:
 The CuisineConnect Backend API is a project designed to serve as the backbone for a food recipe application. It provides endpoints for retrieving, creating, updating, and deleting recipes. This README file serves as a guide to set up and utilize the backend API effectively.
