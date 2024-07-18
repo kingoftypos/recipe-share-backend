@@ -31,9 +31,8 @@ exports.getRecipeById = async (req, res, next) => {
     const { createdBy } = recipe;
     const user = await User.findById(createdBy);
     const { name } = user;
-    res.status(200).json({ ...recipe.toObject(), createdBy: name });
-    //res.status(200).json(recipe);
-    next();
+    // return res.status(200).json({ ...recipe.toObject(), createdBy: name });
+    res.status(200).json(recipe);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -168,7 +167,7 @@ exports.recipeLikes = async (req, res, next) => {
         $push: { likes: userId },
       });
     }
-    res.status(200).json(recipe.likes.length);
+    res.status(200).json({ likes: recipe.likes.length });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -188,8 +187,31 @@ exports.recipeUnlikes = async (req, res, next) => {
         $pull: { likes: userId },
       });
     }
-    res.status(200).json(recipe.likes.length);
+    return res.status(200).json(recipe.likes.length);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+exports.postRecipesSavedByUser = async (req, res, next) => {
+  try {
+    const userId = res.locals.id;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const recipeId = req.params.id;
+    const recipe = await Recipe.findById(recipeId);
+    if (!recipe) {
+      return res.status(404).json({ message: "Recipe not found" });
+    }
+    if (!user.savedRecipes.includes(recipeId)) {
+      await User.findByIdAndUpdate(userId, {
+        $push: { savedRecipes: recipeId },
+      });
+    }
+    return res.status(200).json({ message: "Recipe saved successfully" });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
   }
 };

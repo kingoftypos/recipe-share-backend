@@ -4,6 +4,7 @@ const router = express.Router();
 const recipeMiddleware = require("../middlewares/recipeMiddleware");
 const corsMiddelware = require("../middlewares/corsMiddleware");
 const authController = require("../controllers/authController");
+
 router.use(cors());
 
 router.get("/", corsMiddelware, recipeMiddleware.getAllRecipe);
@@ -15,13 +16,19 @@ router.post(
 );
 router.get("/:id", corsMiddelware, recipeMiddleware.getRecipeById);
 router.post(
-  "/like/:id",
+  "/likerecipes/:id",
   corsMiddelware,
   authController.protect,
   recipeMiddleware.recipeLikes
 );
 router.post(
-  "unlike/:id",
+  "/saverecipes/:id",
+  corsMiddelware,
+  authController.protect,
+  recipeMiddleware.postRecipesSavedByUser
+);
+router.post(
+  "/unlike/:id",
   corsMiddelware,
   authController.protect,
   recipeMiddleware.recipeUnlikes
