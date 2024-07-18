@@ -31,8 +31,8 @@ exports.getRecipeById = async (req, res, next) => {
     const { createdBy } = recipe;
     const user = await User.findById(createdBy);
     const { name } = user;
-    // return res.status(200).json({ ...recipe.toObject(), createdBy: name });
-    res.status(200).json(recipe);
+    return res.status(200).json({ ...recipe.toObject(), createdBy: name });
+    // res.status(200).json(recipe);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -211,6 +211,20 @@ exports.postRecipesSavedByUser = async (req, res, next) => {
       });
     }
     return res.status(200).json({ message: "Recipe saved successfully" });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+exports.sendRecipe = async (req, res, next) => {
+  try {
+    const recipeId = req.params.id;
+    const user = await Recipe.findById(recipeId);
+    if (!user) {
+      return res.status(404).json({ message: "Recipe not found" });
+    }
+    const recipeUrl = `https://recipe-share-frontend.vercel.app/recipe/${recipeId}`;
+    return res.status(200).json({ recipeUrl });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }

@@ -8,26 +8,28 @@ const authController = require("../controllers/authController");
 router.use(cors());
 
 router.get("/", corsMiddelware, recipeMiddleware.getAllRecipe);
+router.get("/:id", corsMiddelware, recipeMiddleware.getRecipeById);
+router.get("/sharerecipe/:id", corsMiddelware, recipeMiddleware.sendRecipe);
 router.post(
   "/",
   corsMiddelware,
   authController.protect,
   recipeMiddleware.createRecipe
 );
-router.get("/:id", corsMiddelware, recipeMiddleware.getRecipeById);
-router.post(
+
+router.patch(
   "/likerecipes/:id",
   corsMiddelware,
   authController.protect,
   recipeMiddleware.recipeLikes
 );
-router.post(
+router.patch(
   "/saverecipes/:id",
   corsMiddelware,
   authController.protect,
   recipeMiddleware.postRecipesSavedByUser
 );
-router.post(
+router.patch(
   "/unlike/:id",
   corsMiddelware,
   authController.protect,
