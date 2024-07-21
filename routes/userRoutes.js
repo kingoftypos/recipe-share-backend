@@ -28,5 +28,11 @@ router.get(
   userMiddleware.getUserRecipies
 );
 
+router.get(
+  "/savedrecipies",
+  corsMiddelware,
+  authController.protect,
+  userMiddleware.getUserSavedRecipies
+);
 
 module.exports = router;
