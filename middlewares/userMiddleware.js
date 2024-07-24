@@ -224,7 +224,7 @@ exports.getUserRecipies = async (req, res, next) => {
 exports.getUserSavedRecipies = async (req, res, next) => {
   try {
     const userId = res.locals.id;
-    const user = await User.findById(userId).populate("savedRecipies");
+    const user = await User.findById(userId).populate("savedRecipes");
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
