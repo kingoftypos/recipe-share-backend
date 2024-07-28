@@ -30,6 +30,12 @@ router.patch(
   recipeMiddleware.postRecipesSavedByUser
 );
 router.patch(
+  "/unsaverecipes/:id",
+  corsMiddelware,
+  authController.protect,
+  recipeMiddleware.unSaveRecipeByUser
+);
+router.patch(
   "/unlike/:id",
   corsMiddelware,
   authController.protect,
