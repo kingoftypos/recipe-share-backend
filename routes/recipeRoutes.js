@@ -18,7 +18,7 @@ router.post(
 );
 
 router.patch(
-  "/likerecipes/:id",
+  "/like/:id",
   corsMiddelware,
   authController.protect,
   recipeMiddleware.recipeLikes
