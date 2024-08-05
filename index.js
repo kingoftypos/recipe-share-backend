@@ -8,7 +8,7 @@ const corsMiddleware = require("./middlewares/corsMiddleware");
 
 const recipeRoute = require("./routes/recipeRoutes");
 const userRoute = require("./routes/userRoutes");
-
+const commentRoute = require("./routes/commentRoutes");
 env.config();
 
 connectDb();
@@ -19,7 +19,6 @@ app.use(corsMiddleware);
 
 app.use(
   cors({
-    // origin: "http://localhost:3000",
     origin: "https://recipe-share-frontend.vercel.app",
     // origin: "https://recipe-share-frontend.vercel.app",
     exposedHeaders: ["Set-Cookie"],
@@ -34,6 +33,7 @@ app.get("/", (req, res, next) => {
 });
 app.use("/v1/api/recipe", recipeRoute);
 app.use("/v1/api/user", userRoute);
+app.use("/v1/api/comment", commentRoute);
 
 const port = process.env.PORT || 5000;
 
