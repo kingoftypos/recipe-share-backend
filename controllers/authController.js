@@ -1,47 +1,25 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/userSchema");
-const cookieParser = require("cookie-parser");
 
 exports.protect = async (req, res, next) => {
-  let token;
-  token = req.cookies.token;
+  // console.log("Cookies: ", req.cookies); // Debugging statement
 
-  if (token) {
-    let decoded;
+  const token = req.cookies.token;
 
-    jwt.verify(token, process.env.JWT_SECRET, (err, tokenRes) => {
-      try {
-        decoded = tokenRes;
-      } catch (error) {
-        if (err.name === "TokenExpiredError") {
-          return res
-            .status(401)
-            .json({ error: "Unauthorized- Token has expired" });
-          //throw new Error("");
-        }
-        return res.status(401).json({ message: "token expired" });
-      }
-      decoded = tokenRes;
-      res.locals.id = decoded.id;
-    });
-
-    // const user = await User.findById(decoded.id);
-
-    // if (user) {
-    //   req.user = user;
-    //   const { name, email, _id } = user;
-    //   res.status(200).json({
-    //     name,
-    //     email,
-    //     _id,
-    //   });
-    //   next();
-    // } else {
-    //   return res.status(401).json({ error: "Unauthorized - user not found" });
-    //   //throw new Error("");
-    // }
-  } else {
+  if (!token) {
     return res.status(401).json({ error: "Unauthorized - token not found" });
   }
-  next();
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      if (err.name === "TokenExpiredError") {
+        return res
+          .status(401)
+          .json({ error: "Unauthorized - Token has expired" });
+      }
+      return res.status(401).json({ message: "Invalid token" });
+    }
+
+    res.locals.id = decoded.id;
+    next();
+  });
 };
