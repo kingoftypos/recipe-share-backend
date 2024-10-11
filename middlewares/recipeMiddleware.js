@@ -1,7 +1,7 @@
 const Recipe = require("../models/recipeSchema");
 const User = require("../models/userSchema");
 const APIFeatures = require("./../utils/apiFeatures");
-
+const Comment = require("../models/commentsSchema");
 exports.getAllRecipe = async (req, res, next) => {
   try {
     //console.log(`this is req.query:`, req.query);
@@ -31,9 +31,20 @@ exports.getRecipeById = async (req, res, next) => {
     const { createdBy } = recipe;
     const user = await User.findById(createdBy);
     const { name } = user;
-    return res.status(200).json({ ...recipe.toObject(), createdBy: name });
-    // res.status(200).json(recipe);
+    const comments = await Comment.find({
+      recipeId: req.params.id,
+    });
+
+    // Map comments to include replies
+
+    // return res.status(200).json({ ...recipe.toObject(), createdBy: name });
+    return res.status(200).json({
+      ...recipe.toObject(),
+      createdBy: name,
+      comments: comments,
+    });
   } catch (error) {
+    console.log("Error in getting a single recipe: ", error);
     res.status(500).json({ error: error.message });
   }
 };

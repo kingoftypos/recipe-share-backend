@@ -9,6 +9,8 @@ const corsMiddelware = require("../middlewares/corsMiddleware");
 
 router.use(cors());
 
+router.get("/:id", corsMiddelware, commentMiddleware.getCommentsByRecipeId);
+
 router.post(
   "/:recipeId",
   corsMiddelware,

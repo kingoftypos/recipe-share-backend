@@ -37,6 +37,6 @@ commentSchema.pre("find", function (next) {
   next();
 });
 
-const Comment = mongoose.model("Comments", commentSchema);
+const Comment = mongoose.model("Comment", commentSchema);
 
 module.exports = Comment;

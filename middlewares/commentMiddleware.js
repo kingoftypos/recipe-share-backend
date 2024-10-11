@@ -2,6 +2,25 @@ const Comment = require("../models/commentsSchema");
 const { validationResult } = require("express-validator");
 const User = require("../models/userSchema");
 
+exports.getCommentsByRecipeId = async (req, res, next) => {
+  const { id } = req.params;
+  //  console.log(id);
+
+  try {
+    const comments = await Comment.find({ recipeId: id })
+      .populate("postedBy")
+      .populate({
+        path: "replies", // Populate replies field
+        populate: { path: "postedBy" }, // Populate postedBy for each reply
+      });
+    // console.log(comments);
+    return res.status(200).json(comments);
+  } catch (error) {
+    console.error("Error fetching comments:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
 exports.postComment = async (req, res, next) => {
   try {
     // const errors = validationResult(req);
@@ -39,7 +58,7 @@ exports.replyToComment = async (req, res, next) => {
     };
     const newReply = await new Comment(replyObj).save();
     await Comment.findOneAndUpdate(
-      { _id: commentId, recipeId },
+      { _id: commentId },
       { $push: { replies: newReply._id } }
     );
     res.status(201).json({ message: "Reply posted successfully" });

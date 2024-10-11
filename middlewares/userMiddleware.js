@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer");
 exports.getUser = async (req, res, next) => {
   try {
     const userId = res.locals.id;
-    //console.log(res.locals.id);
+    // console.log("userId", typeof userId);
     const user = await User.findById(userId);
     const { _id, email, name } = user;
     if (!user) {
@@ -128,6 +128,7 @@ exports.forgetPassword = async (req, res, next) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_EXPRIRESIN,
     });
+    
     const baseurl = process.env.BASE_URL;
 
     const transporter = nodemailer.createTransport({
@@ -186,6 +187,7 @@ exports.resetPassword = async (req, res, next) => {
     })
     .catch((e) => res.json({ status: e }));
 };
+
 exports.editDetails = async (req, res, next) => {
   try {
     let id = res.locals.id;
@@ -235,3 +237,4 @@ exports.getUserSavedRecipies = async (req, res, next) => {
     return res.status(404).json({ message: error.message });
   }
 };
+
