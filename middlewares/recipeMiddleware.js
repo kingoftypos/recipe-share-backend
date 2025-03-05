@@ -261,7 +261,7 @@ exports.sendRecipe = async (req, res, next) => {
     if (!user) {
       return res.status(404).json({ message: "Recipe not found" });
     }
-    const recipeUrl = `https://recipe-share-frontend.vercel.app/recipe/${recipeId}`;
+    const recipeUrl = `https://cuisine-connect-teal.vercel.app/recipe/${recipeId}`;
     return res.status(200).json({ recipeUrl });
   } catch (error) {
     return res.status(500).json({ error: error.message });
