@@ -19,7 +19,7 @@ app.use(corsMiddleware);
 
 app.use(
   cors({
-    origin: "https://cuisine-connect-teal.vercel.app/",
+    origin: "https://cuisine-connect-teal.vercel.app",
     // origin: "https://recipe-share-frontend.vercel.app",
     exposedHeaders: ["Set-Cookie"],
     credentials: true,
